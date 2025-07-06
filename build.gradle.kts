@@ -46,13 +46,4 @@ publishing {
             }
         }
     }
-
-    publications {
-        create<MavenPublication>("gpr") {
-            from(components["java"])
-            groupId = ArtifactProperties.GROUP
-            artifactId = ArtifactProperties.ID
-            version = ArtifactProperties.VERSION
-        }
-    }
 }
