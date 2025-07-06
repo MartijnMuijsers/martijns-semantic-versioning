@@ -4,7 +4,7 @@ The version is determined automatically based on Git tags:
 * Commits can have a version Git tag, which has the format of starting with `v` followed by a valid semantic version of the format `MAJOR.MINOR.PATCH`.
 * The previous version is based on the latest ancestor commit of the current commit that has a version Git tag. Otherwise, it is assumed to be `0.0.1`.
 * The next version is based on the previous version:
-  * If at least one commit message since the commit on which the previous version was based starts with `feat:`, or is not formatted like a conventional commit, the next version will be the next major version (e.g. `1.5.4` becomes `2.0.0`)
+  * If at least one commit message since the commit on which the previous version was based starts with `feat:`, or is not formatted like an [Angular conventional commit](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum), the next version will be the next major version (e.g. `1.5.4` becomes `2.0.0`)
     * If the major version is `0`, the minor version will be bumped instead (e.g. `0.5.4` becomes `0.6.0`); to bump the major version, a manual `v1.0.0` Git tag should be added to a commit
   * Otherwise, if at least one commit message since the commit on which the previous version was based starts with `fix:`, the next version will be the next minor version (e.g. `1.5.4` becomes `1.6.0`)
     * If the major version is `0`, the patch version will be bumped instead (e.g. `0.5.4` becomes `0.5.5`)
