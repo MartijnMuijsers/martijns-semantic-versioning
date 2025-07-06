@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Publish to GitHub Packages
-        run: ./gradlew publish
+        run: ./gradlew publishPluginMavenPublicationToGitHubPackagesRepository
         env:
           USERNAME: ${{ secrets.GITHUB_ACTOR }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
