@@ -1,9 +1,20 @@
 plugins {
-    id("java")
+    `kotlin-dsl`
+    `java-gradle-plugin`
+    `maven-publish`
 }
 
 group = "nl.martijnmuijsers"
 version = "0.1"
+
+gradlePlugin {
+    plugins {
+        create("martijnsSemanticVersioning") {
+            id = "nl.martijnmuijsers.martijns-semantic-versioning"
+            implementationClass = "nl.martijnmuijsers.martijnssemanticversioning.VersioningPlugin"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
