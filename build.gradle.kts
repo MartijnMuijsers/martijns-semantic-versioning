@@ -4,13 +4,19 @@ plugins {
     `maven-publish`
 }
 
-group = "nl.martijnmuijsers"
-version = "0.1"
+object ArtifactProperties {
+    const val GROUP = "nl.martijnmuijsers"
+    const val ID = "martijns-semantic-versioning"
+    const val VERSION = "0.1"
+}
+
+group = ArtifactProperties.GROUP
+version = ArtifactProperties.VERSION
 
 gradlePlugin {
     plugins {
         create("martijnsSemanticVersioning") {
-            id = "nl.martijnmuijsers.martijns-semantic-versioning"
+            id = "${ArtifactProperties.GROUP}.${ArtifactProperties.ID}"
             implementationClass = "nl.martijnmuijsers.martijnssemanticversioning.VersioningPlugin"
         }
     }
@@ -27,4 +33,26 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/MartijnMuijsers/martijns-semantic-versioning")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("gpr") {
+            from(components["java"])
+            groupId = ArtifactProperties.GROUP
+            artifactId = ArtifactProperties.ID
+            version = ArtifactProperties.VERSION
+        }
+    }
 }
