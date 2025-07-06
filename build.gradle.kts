@@ -5,7 +5,7 @@ plugins {
 }
 
 object ArtifactProperties {
-    const val GROUP = "nl.martijnmuijsers"
+    const val GROUP = "nl.martijnmuijsers.martijns-semantic-versioning"
     const val ID = "martijns-semantic-versioning"
     const val VERSION = "0.1"
 }
@@ -16,7 +16,7 @@ version = ArtifactProperties.VERSION
 gradlePlugin {
     plugins {
         create("martijnsSemanticVersioning") {
-            id = "${ArtifactProperties.GROUP}.${ArtifactProperties.ID}"
+            id = ArtifactProperties.ID
             implementationClass = "nl.martijnmuijsers.martijnssemanticversioning.VersioningPlugin"
         }
     }
