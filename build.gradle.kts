@@ -16,6 +16,7 @@ version = ArtifactProperties.VERSION
 gradlePlugin {
     plugins {
         create("martijnsSemanticVersioning") {
+            group = ArtifactProperties.GROUP
             id = ArtifactProperties.ID
             implementationClass = "nl.martijnmuijsers.martijnssemanticversioning.VersioningPlugin"
         }
